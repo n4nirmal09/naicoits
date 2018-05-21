@@ -14,7 +14,7 @@
   .demo-nav
   {
     list-style: none;
-    padding:20px;
+    padding:0px;
     margin:0;
     display: flex;
     align-items:center;

@@ -1,11 +1,12 @@
 import {VirtualScroll} from "./virtualscroll"
 import {Simplrz} from "@/utilities/simplrz" 
 import {FrameImpulse} from "@/utilities/frameimpulse"
+import state from "@/store"
 import "GSAP"
 export const scrollPaneY = (container, blockTest, scrollFunc) => {
 
 	var contentHeight, scrollTarget, scroll, windowHeight, maxScroll;
-	var ease = 0.05;
+	var ease = 0.08;
 	var handle, handleHeight, trackHeight, scrollDrag = false;;
 	
 	var mult = Simplrz.touch ? 1.5 : .8;
@@ -18,12 +19,11 @@ export const scrollPaneY = (container, blockTest, scrollFunc) => {
 
 		scrollTarget = Math.max(scrollTarget, 0);
 		scrollTarget = Math.min(scrollTarget, maxScroll);
-
+		state.dispatch('setScrollTargetY',scrollTarget)
 		
 	}
 
 	var onFrame = function() {
-
 		if(contentHeight < windowHeight) return;
 
 		scroll += (scrollTarget - (scroll)) * ease;
@@ -56,7 +56,7 @@ export const scrollPaneY = (container, blockTest, scrollFunc) => {
 	return {
 
 		refresh: refresh,
-
+		scrollTarget: scrollTarget,
 		setScrollbar: function(_handle, _handleHeight, _trackHeight) {
 			handle = _handle;
 			handle.style.height = _handleHeight + 'px';
@@ -106,7 +106,7 @@ export const scrollPaneY = (container, blockTest, scrollFunc) => {
 		off: function() {
 			VirtualScroll.off(onScroll);
 			FrameImpulse.off(onFrame);
-			container.ext.setY(0).transform();
+			TweenLite.set(container,{y: 0})
 		}
 	}
 
@@ -124,8 +124,11 @@ export const scrollPaneX = (container, blockTest, scrollFunc) => {
 
 		if(blockTest && blockTest()) return;
 
-		scrollTarget -= e.deltaY ? e.deltaY * mult : e.deltaX * mult;
-
+		if(!Modernizr.touchevents){
+			scrollTarget -= e.deltaY ? e.deltaY * mult : e.deltaX * mult;
+		} else {
+			scrollTarget -= e.deltaX * mult;
+		}
 		scrollTarget = Math.max(scrollTarget, 0);
 		scrollTarget = Math.min(scrollTarget, maxScroll);
 

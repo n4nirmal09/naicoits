@@ -113,10 +113,10 @@ export const VirtualScroll = ((document) => {
 		// 37 left arrow, 38 up arrow, 39 right arrow, 40 down arrow
 		event.deltaX = event.deltaY = 0;
 		switch(e.keyCode) {
-			case 37:
+			case 39:
 				event.deltaX = -keyStep;
 				break;
-			case 39:
+			case 37:
 				event.deltaX = keyStep;
 				break;
 			case 38:

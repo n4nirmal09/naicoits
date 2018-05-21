@@ -1,0 +1,15 @@
+{
+  "minify": true,
+  "options": [
+    "domPrefixes",
+    "prefixes",
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/history",
+    "test/svg",
+    "test/touchevents",
+    "test/css/calc",
+    "test/css/flexbox"
+  ]
+}
