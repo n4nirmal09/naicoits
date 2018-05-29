@@ -3,7 +3,7 @@
         <div class="inner-wrapper section-grid">
           <div> section 1 {{ breakpoint.width + ' x ' + breakpoint.height }} <span id="animate">animate this</span></div>
           <div> section 2 </div>
-          <div id="section-2"> section 3 <span id="animate2" style="opacity: 0">animate this</span></div>
+          <div id="section-2" class="reveal-contents"> section 3 <span id="animate2" style="opacity: 0">animate this</span></div>
           <div> section 4 </div>
           <div> section 5 </div>
           <div> section 6 </div>
@@ -15,7 +15,6 @@
 </style>
 <script>
 	import {scrollPaneY} from '@/virtualscroll/scrollpane'
-	import "GSAP"
 
 	export default {
 		data () {
@@ -24,7 +23,6 @@
 			}
 		},
 		mounted () {
-
 			//console.log(document.getElementById('section-2').offsetTop)
 			let vs = scrollPaneY(this.$el, null,null)
 		    vs.on()

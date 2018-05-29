@@ -264,6 +264,13 @@
   margin-right: auto;
 }
 
+@mixin positioned-center {
+  display: block;
+  left:50%;
+  top:50%;
+  transform: translateX(-50%) translateY(-50%)
+}
+
 // Text Overflow
 
 @mixin text-truncate {
@@ -350,4 +357,10 @@
   &:-moz-placeholder           {color : $color;opacity : 1}
   &::-moz-placeholder          {color : $color;opacity : 1}
   &:-ms-input-placeholder      {color : $color;opacity : 1} 
+}
+
+//---------------------- Functions -----------------------
+
+@function bezier($key) {
+  @return map-get($transition-beziers, $key);
 }

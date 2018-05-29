@@ -7,8 +7,17 @@ import store from './store'
 import mixins from './mixins'
 import './sass/main.scss'
 import './utilities/modernizr'
+import './utilities/bodymovin'
+import "GSAP"
+
+// Components
+import entryAnim from './components/entryanim'
+
 
 Vue.config.productionTip = false
+
+// Define global components
+Vue.component('entry-anim', entryAnim)
 
 // define a mixin object
 Vue.mixin(mixins)

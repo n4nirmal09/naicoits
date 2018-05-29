@@ -2,7 +2,6 @@ import {VirtualScroll} from "./virtualscroll"
 import {Simplrz} from "@/utilities/simplrz" 
 import {FrameImpulse} from "@/utilities/frameimpulse"
 import state from "@/store"
-import "GSAP"
 export const scrollPaneY = (container, blockTest, scrollFunc) => {
 
 	var contentHeight, scrollTarget, scroll, windowHeight, maxScroll;

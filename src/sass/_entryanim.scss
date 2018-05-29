@@ -1,0 +1,157 @@
+.entry-anim-canvas
+{
+	position: fixed;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	z-index: $entry-anim-index;
+	> [class*='col-']
+	{
+		width: 100%;
+		height: 50%;
+		position: absolute;
+		padding: 20px;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        color: #fff;
+        &.col-top{
+        	left: 0;
+			top: 0;
+			justify-content:flex-end;
+			align-items:flex-end;
+			padding-bottom: 50px;
+        }
+        &.col-bottom{
+        	right: 0;
+        	bottom: 0;
+        	justify-content:flex-start;
+        	align-items:flex-start;
+        	padding-top: 50px;
+        }
+	}
+	
+
+}
+
+.title-connect
+{
+		position: absolute;
+		@include positioned-center;
+		font-size: 46px;
+		letter-spacing: 4px;
+		color:#fff;
+		#svg-text-connect
+		{
+			transition: ease 0.2s;
+		}
+		&:after{
+			content: '';
+			position: absolute;
+			bottom:0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			display: block;
+			transform: scale(0,0);
+		}
+		&.reveal-connect{
+			overflow: hidden;
+			&:after{
+				transform: scaleX(0);
+				animation: slide-mask-in 0.6s forwards;
+			}
+			#svg-text-connect
+			{
+				transition-delay:0.3s;
+				opacity: 1!important;
+			}
+		}
+		&.remove-connect{
+			&:after
+			{
+				transform: scaleY(0);
+			    animation: slide-mask-to-top 0.6s forwards;
+			}
+			#svg-text-connect
+			{
+				transition-delay:0.2s;
+				opacity: 0!important;
+			}
+		}
+}
+
+#svg-text-connect
+{
+	display: block;
+	.text-1{
+		fill: theme-color("primary")
+	}
+	.text-2
+	{
+		fill:#fff
+	}
+}
+
+.entry-anim-panel
+{
+	.title{
+		font-size: 3vw;
+	}
+	&.col-top{
+		background: #fff;
+		color:theme-color("primary");
+	}
+	&.col-bottom{
+		background: theme-color("primary");
+	}
+}
+
+#text-intel,#text-info
+{
+	&:after{
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+		bottom:0;
+		left: 0;
+		position: absolute;
+		transform: scale(0,0);
+	}
+
+	&.remove-title{
+		> span{
+			transition: ease 0.2s;
+			transition-delay:0.1s;
+			opacity: 0!important;
+		}
+		&:after{
+			animation: slide-mask-to-top 0.6s forwards;
+		}
+	}
+}
+
+#text-intel:after{
+	background: theme-color("primary")
+}
+
+#text-info:after{
+	background: #fff
+}
+
+#text-intel>span,#text-info>span{
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+}
+
+#iconAnimationWindow {
+	width: 200px;
+	position: fixed;
+	z-index: 2;
+	@include positioned-center;
+
+}
