@@ -144,7 +144,7 @@
 
 #text-intel>span,#text-info>span{
 	display: inline-block;
-	width: 40px;
+	min-width: 40px;
 	text-align: center;
 }
 
@@ -154,4 +154,35 @@
 	z-index: 2;
 	@include positioned-center;
 
+}
+
+// Responsive
+@include media-breakpoint-down(md) {
+	.entry-anim-panel 
+	{
+		.title{
+			font-size: 30px; 
+		}
+	}
+
+	#text-intel > span, #text-info > span
+	{
+		min-width:28px;
+	}
+}
+
+@include media-breakpoint-down(sm) {
+	.entry-anim-panel 
+	{
+		.title{
+			font-size: 20px; 
+		}
+		#text-intel > span, #text-info > span
+		{
+			min-width:20px;
+		}
+	}
+	#svg-text-connect {
+		width: 280px;
+	}
 }

@@ -1,0 +1,142 @@
+// Hamburger
+.hamburger{
+	display: block;
+	pointer-events: all;
+    position: relative;
+	button{
+		display: block;
+	    background-color: transparent;
+	    border: none;
+	    width: 30px;
+	    height: 26px;
+	    font-size: 0;
+	    padding:0;
+	    outline: none;
+	    cursor: pointer;
+	    //padding: 24px 20px 24px 40px;
+	    //margin-right: -40px;
+	    //margin-top: -20px;
+	    > span {
+	    	    width: 30px;
+			    height: 2px;
+			    background-color: #fff;
+			    display: block;
+			    transition: all 0.3s ease;
+			    position: relative;
+			    & ~ span{
+			    	margin-top: 10px;
+			    }
+	    }
+
+	    &:hover{
+	    	> span{
+	    		&:nth-child(1) {
+	    			transform: translateY(6px)
+	    		}
+	    		&:nth-child(2){
+	    			width: 0;
+	    			transform: translateX(30px)
+	    		}
+	    		&:nth-child(3) {
+	    			transform: translateY(-6px)
+	    		}
+	    	}
+	    }
+	    &.active{
+			> span{
+				margin-top: 0;
+				&:nth-child(1) {
+	    			transform: rotate(50deg)
+	    		}
+	    		&:nth-child(2) {
+	    			visibility: hidden;
+       				opacity: 0;
+	    		}
+	    		&:nth-child(3) {
+	    			transform: rotate(-50deg) translate(3px, -2px)
+	    		}
+			}
+	    }
+	}
+}
+
+// Cards
+.home-text-card
+{
+	padding-left:55px;
+	color: #fff;
+
+	.btn{
+		margin-top:20px;
+		margin-left: 5px;
+	}
+}
+
+// Logo text
+
+.logo-text
+{
+	.title{
+		font-size: 155px;
+		font-weight: 700;
+		margin-bottom: 0;
+		line-height: 1;
+	}
+	.sub-title{
+		font-size: 39px;
+		letter-spacing: 10px;
+        padding-left: 12px;
+	}
+}
+
+
+// Share list
+
+.social-share
+{
+ &.flex-row
+ {
+ 	> li + li{
+ 		margin-left: 22px;
+ 	}
+ }
+}
+
+// Nav list
+.nav-list{
+	margin:0;
+}
+.nav-item{
+	text-align: center;
+	padding: 10px 20px;
+	> .nav-link{
+		cursor: pointer;
+		display: inline-block;
+		text-align: center;	
+		color : theme-color("light");
+		font-size: calculate-rem(30px, $font-size-html);
+		text-decoration: none;
+		position: relative;
+		&:after{
+			content: '';
+			width: 100%;
+			height: 1px;
+			position: absolute;
+			bottom:-0;
+			left: 0;
+			background: theme-color("light");
+			transform-origin: center center;
+			transform: scaleX(0);
+			transition: 0.3s ease; 
+		}
+	}
+
+	&:hover {
+		>.nav-link {
+			&:after{
+				transform: scaleX(1);
+			}
+		}
+	}
+	
+}

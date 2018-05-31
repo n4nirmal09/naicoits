@@ -1,41 +1,13 @@
 // custom mixins goes here  
 
-// @mixin adjust-line-height($font-size){
-//   font-size: $font-size !important;
-//   line-height: ($font-size-base / $font-size)em !important;
-// }
-
-@mixin bd-custom-min($width){
-   @media screen and (min-width: $width){
-    @content;
-  }
-}
-@mixin bd-custom-max($width){
-   @media screen and (max-width: $width - 1){
-    @content;
-  }
-}
-
-@mixin bd-bw($from,$to){
-   @media screen and (min-width: $from) and (max-width: $to - 1){
-    @content;
-  }
-}
-
 // fonts calculating ems
 
-@mixin calculateRem($size,$font-size-relative) {
-  font-size: $size;
-  font-size: ($size / $font-size-relative) + rem; 
+@function calculate-rem($size,$font-size-relative) {
+  @return ($size / $font-size-relative) * 1rem;
 }
 
 
-// fonts calculating rems. which are relative to html rather than the parent element
 
-// @mixin calculateRem($sizeValue: 12 ){
-//   font-size: $sizeValue + px; //fallback for old browsers
-//   font-size: (0.125 * $sizeValue) + rem;
-// }
 // vw units
 @function get-vw($target) {
   $vw-context: (1440 * 0.01) * 1px;

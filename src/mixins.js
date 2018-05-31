@@ -52,18 +52,25 @@ export default {
 
 		fadeIn (o, t, c) {
 			let time = t || 0.5
-			return TweenLite.from(o,time,{autoAlpha: 0, 
-					onComplete () {
-						if(c) c()
-					}})
+			return TweenLite.fromTo(o,time,{
+						autoAlpha: 0},{
+						autoAlpha: 1,
+						onComplete () {
+								if(c) c()
+						}
+					})
 		},
 
 		fadeOut (o, t, c) {
-			let time = t || 0.5
-			return TweenLite.to(o,time,{autoAlpha: 0, 
-					onComplete () {
-						if(c) c()
-					}})
+		  let time = t || 0.5
+		  return TweenLite.fromTo(o, time, {
+		    autoAlpha: 1
+		  }, {
+		    autoAlpha: 0,
+		    onComplete() {
+		      if (c) c()
+		    }
+		  })
 		},
 
 		splitWord (w) {

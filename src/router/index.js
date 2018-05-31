@@ -11,15 +11,17 @@ export default new Router({
   	  {
   	  	path: '/',
   	  	component: home,
-  	  	name: 'Home'
+  	  	name: 'home'
   	  },
 	  {
 	  	path: '/hor',
-	  	component: HS
+	  	component: HS,
+	  	name: 'hor'
 	  },
 	  {
 	  	path: '/ver',
-	  	component: VS
+	  	component: VS,
+	  	name: 'ver'
 	  }
   ],
   mode: 'history'

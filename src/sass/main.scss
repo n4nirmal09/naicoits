@@ -5,6 +5,13 @@
 @import "../../node_modules/bootstrap/scss/bootstrap-custom";
 
 // Main styles
-@import "./demo",
+@import "./fontello",
+		"./typ",
+		"./layout",
+		"./demo",
 		"./entryanim",
-		"./animations"
+		"./animations",
+		"./banner",
+		"./buttons",
+		"./components",
+		"./pagespecifics";

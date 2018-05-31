@@ -1,0 +1,11 @@
+.listing-page,.single-page{
+	.hamburger button > span {
+		background: #000;
+	}
+}
+
+.nav-on {
+	.hamburger button > span {
+		background: #fff;
+	}
+}

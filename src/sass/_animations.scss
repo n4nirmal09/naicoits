@@ -1,5 +1,12 @@
-// Enter animation
+// Page transitions
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .4s ease;
+}
+.fade-enter, .fade-leave-active {
+    opacity: 0
+}
 
+// Keyframes
 @include keyframes('slide-mask-in'){
 	0%{
 		transform: translateX(-100%);
