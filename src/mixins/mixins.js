@@ -73,11 +73,23 @@ export default {
 		  })
 		},
 
-		splitWord (w) {
+		splitText (w) {
 			let content = document.querySelector(w)
 			var chars = content.innerHTML.split("")
 			content.innerHTML = "<span>" + content.innerHTML.split("").join("</span><span>") + "</span>"
 			return chars
+		},
+		splitWord (w) {
+			let content = document.querySelector(w) || w,
+				words
+			if (typeof content !== 'string') {
+				words = content.innerHTML.split(" ")
+			    content.innerHTML = "<span>" + content.innerHTML.split(" ").join("</span><span>") + "</span>"
+			} else {
+				words = "<span>" + content.split(" ").join("</span><span>") + "</span>"
+			}
+			
+			return words
 		},
 
 		shuffleArray (array) {

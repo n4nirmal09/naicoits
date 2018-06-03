@@ -11,7 +11,7 @@
 	width: 100%;
     position: relative;
 
-    .banner-background-image,.overlay-mask
+    .banner-background-image
     {
     	position: absolute;
     	left: 0;
@@ -40,5 +40,10 @@
 
 .overlay-mask
 {
+    position: absolute;
+        left: 0;
+        top:0;
+        width: 100%;
+        height: 100%;
 	background: fade-out(theme-color("primary"), 0.8)
 }

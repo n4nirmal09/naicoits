@@ -3,11 +3,21 @@
 		<div class="nav-container h-100 d-flex align-items-center justify-content-center">
 			<ul class="nav-list list-unstyled" style="opacity:0">
 				<li class="nav-item"><span class="nav-link" @click.stop="navigateTo('/')">Home</span></li>
-				<li class="nav-item"><span class="nav-link" @click.stop="navigateTo('/hor')">About Us</span></li>
-				<li class="nav-item"><span class="nav-link" @click.stop="navigateTo('/hor')">Services</span></li>
-				<li class="nav-item"><span class="nav-link" @click.stop="navigateTo('/hor')">Case Studies</span></li>
-				<li class="nav-item"><span class="nav-link" @click.stop="navigateTo('/hor')">Careers</span></li>
-				<li class="nav-item"><span class="nav-link" @click.stop="navigateTo('/hor')">Contact Us</span></li>
+				<li class="nav-item">
+					<span class="nav-link" @click.stop="navigateTo('/about')">About Us</span>
+				</li>
+				<li class="nav-item">
+					<span class="nav-link" @click.stop="navigateTo('/services')">Services</span>
+				</li>
+				<li class="nav-item">
+					<span class="nav-link" @click.stop="navigateTo('/cases')">Case Studies</span>
+				</li>
+				<li class="nav-item">
+					<span class="nav-link" @click.stop="navigateTo('/products')">Products</span>
+				</li>
+				<li class="nav-item">
+					<span class="nav-link" @click.stop="navigateTo('/contact')">Contact</span>
+				</li>
 			</ul>
 		</div>
 	</nav>

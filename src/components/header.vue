@@ -29,6 +29,14 @@
 			}
 		},
 
+		mounted () {
+			TweenMax.staggerFrom(this.selectAll('.hamburger,#main-logo', this.$el),0.5,{
+				y: -50,
+				autoAlpha: 0,
+				delay:1.2	
+			},0.2)
+		},
+
 		methods: {
 		}
 	}

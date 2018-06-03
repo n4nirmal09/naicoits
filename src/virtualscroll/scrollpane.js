@@ -37,7 +37,7 @@ export const scrollPaneY = (container, blockTest, scrollFunc) => {
 			handle.style.visibility = (contentHeight < windowHeight) ? 'hidden' : 'visible';
 			handle.ext.setY(n * trackHeight).setZ(0.01).transform();
 		}
-
+		
 		if(scrollFunc) {
 			scrollFunc(scroll / maxScroll);
 		}
@@ -130,8 +130,6 @@ export const scrollPaneX = (container, blockTest, scrollFunc) => {
 		}
 		scrollTarget = Math.max(scrollTarget, 0);
 		scrollTarget = Math.min(scrollTarget, maxScroll);
-
-		console.log(scrollTarget)
 	}
 
 	var onFrame = function() {
@@ -218,7 +216,7 @@ export const scrollPaneX = (container, blockTest, scrollFunc) => {
 		off: function() {
 			VirtualScroll.off(onScroll);
 			FrameImpulse.off(onFrame);
-			TweenLite.set(container,{x: 0})
+			//TweenLite.set(container,{x: 0})
 		}
 	}
 

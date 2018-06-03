@@ -78,7 +78,7 @@
 			splitTextAnim (t) {
 				TweenLite.to(this.select(t),0.2,{autoAlpha: 1})
 				let tl = new TimelineLite()
-				let chars = this.splitWord(t)
+				let chars = this.splitText(t)
 				let originalText = chars
 				let spans = this.selectAll(t + ">span")
 				console.log(spans.forEach)

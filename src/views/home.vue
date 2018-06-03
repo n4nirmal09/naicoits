@@ -1,16 +1,9 @@
 <template>
 		<div  class="nfront-container landing-page">
 			<div class="page-detail vs-section">
-			    <div class="page-banner" :style="'height:' + this.breakpoint.height + 'px'">
-			    	<div class="banner-background" :style="'height:' + this.breakpoint.height + 'px'">
-						<div class="banner-background-image"></div>
-						<video id="mainVideo" autoplay="" loop="">
-	                        <source src="@/assets/Blueplanet.mp4">
-	                    </video>
-	                    <span class="overlay-mask"></span>
-					</div>
-					<div class="banner-content d-flex align-items-center">
-						<div class="home-text-card" >
+			    <page-banner :videoLinks="[{url: require('../assets/Blueplanet.mp4')}]">
+			    	<template slot='content'>
+			    		<div class="home-text-card" >
 							<div class="logo-text">
 								<h1 class="title">Naico ITS</h1>
 								<div class="sub-title">TECHNOLOGY SOLUTIONS</div>
@@ -20,8 +13,8 @@
 								 <i class="icon-right-open"></i></a>
 							</div>
 						</div>
-					</div>
-			    </div>	
+			    	</template>
+			    </page-banner>	
 			</div>
 	    </div>
 </template>
@@ -30,6 +23,26 @@
 	export default {
 		created () {
 			this.$store.dispatch('setPageName', 'home-page')
+		},
+
+		mounted () {
+			TweenMax.staggerFrom(this.selectAll('.title,.sub-title,.card-action',this.$el),0.5,{
+				y:100,
+				autoAlpha:0,
+				delay:1,
+				ease: Power3.easeOut
+			}, 0.1)
+		},
+
+		beforeRouteLeave (to, from, next) {
+	        TweenMax.staggerTo(this.selectAll('.title,.sub-title,.card-action',this.$el),0.5,{
+					x:-100,
+					autoAlpha: 0,
+					ease: Power3.easeIn
+				},0.1)
+	        TweenMax.delayedCall(0.5,() => {
+	        	next()
+	        })
 		},
 
 		computed: {

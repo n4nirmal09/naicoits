@@ -7,13 +7,13 @@
    <!-- Main Site loader long -->
    <entry-anim v-if="mainEntryAnim"></entry-anim>
    <!-- Main Content -->
-   <main id="nfront-wrapper">
+   <main id="nfront-wrapper" v-else>
      <transition name="fade">
-       <router-view v-if="!mainEntryAnim"></router-view>
+        <router-view></router-view>
      </transition>
    </main>
    <!-- Main Footer -->
-   <transition name="fade">
+   <transition  name="fade">
      <main-footer v-if="!mainEntryAnim"></main-footer>
    </transition>
   </div>
