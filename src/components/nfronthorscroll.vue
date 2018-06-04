@@ -1,5 +1,5 @@
 <template>
-	<div class="vs-section">
+	<div class="vs-section bg-primary">
 		<section class="horizontal-scroll-container">
 	        <slot name="content"></slot>
 	    </section>

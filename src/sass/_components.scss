@@ -70,13 +70,76 @@
 		margin-top:20px;
 		margin-left: 5px;
 	}
+
+	@include media-breakpoint-down(md)
+	{
+		padding-left:30px
+	}
+	@include media-breakpoint-down(sm)
+	{
+		width: 100%;
+		padding-left:0;
+		text-align:center;
+	}
 }
+
+.logo-text
+{
+	.title{
+		font-size: calculate-rem(155px, $font-size-html);
+		font-weight: 700;
+		margin-bottom: 0;
+		line-height: 1;
+	}
+	.sub-title{
+		font-size: calculate-rem(39px, $font-size-html);
+		letter-spacing: 10px;
+        padding-left: 12px;
+	}
+
+	@include media-breakpoint-down(md){
+		.title{
+			font-size: calculate-rem(80px, $font-size-html);
+		}
+		.sub-title{
+			padding-left: 0;
+			font-size: calculate-rem(20px, $font-size-html);
+			letter-spacing: 6px;
+		}
+	}
+
+	@include media-breakpoint-down(md){
+		.title{
+			font-size: calculate-rem(80px, $font-size-html);
+		}
+		.sub-title{
+			padding-left: 0;
+			font-size: calculate-rem(20px, $font-size-html);
+			letter-spacing: 6px;
+		}
+	}
+
+	@include media-breakpoint-down(sm){
+
+		.title{
+			font-size: calculate-rem(60px, $font-size-html-small);
+		}
+		.sub-title{
+			padding-left: 0;
+			font-size: calculate-rem(16px, $font-size-html-small);
+			letter-spacing: 3px;
+		}
+	}
+}
+
+// Cta-linkcard
 
 .cta-link-card
 {
 	position: relative;
 	overflow: hidden;
 	cursor: pointer;
+	
 	.cta-bg
 	{
 		position: absolute;
@@ -84,18 +147,20 @@
 		top: 0;
 		width: 100%;
 		height: 100%;
+		
 		transition: ease 0.3s;
 		background-position: center center;
 		background-size: cover;
+		opacity: 0!important;
 	}
-
 	.overlay-mask
 	{
 		background: theme-color("primary");
 		transition: ease 0.3s;
-		opacity: 0.8
+		opacity: 0.8;
+		border-left: 1px solid lighten(theme-color("primary"),10%);
+	    border-right: 1px solid lighten(theme-color("primary"),10%);
 	}
-
 	.cta-detail{
 		&,article{
 			position: relative;
@@ -117,6 +182,17 @@
 			position: absolute;
 			bottom:0;
 			transition: ease 0.2s;
+			opacity: 0;
+		}
+	}
+
+	&.hover-enabled{
+		.overlay-mask
+		{
+			border:none;
+		}
+		.cta-bg{
+			opacity: 1!important;
 		}
 	}
 
@@ -134,7 +210,7 @@
 			&:not(:hover){
 				transition-delay:0.3s;
 			}
-			opacity: 1!important;
+			opacity: 1;
 		}
 	}
 
@@ -154,26 +230,30 @@
 			opacity: 0!important;
 		}
 	}
+	
+	@at-root .touch {
+		.cta-link-card
+		{
+			.btn{
+				position: relative;
+				margin-top: 30%;
+				opacity: 1;
+			}
+		}
+	}
+	@include media-breakpoint-down(sm) {
+		.cta-detail{
+			padding-left: 20px;
+			padding-right: 20px;
+			.title{
+				font-size: calculate-rem(30px,$font-size-html-small);
+			}
+		}
+	}
 }
 
 
 
-// Logo text
-
-.logo-text
-{
-	.title{
-		font-size: 155px;
-		font-weight: 700;
-		margin-bottom: 0;
-		line-height: 1;
-	}
-	.sub-title{
-		font-size: 39px;
-		letter-spacing: 10px;
-        padding-left: 12px;
-	}
-}
 
 
 // Share list

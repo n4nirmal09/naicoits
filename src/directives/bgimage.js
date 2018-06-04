@@ -6,7 +6,7 @@ export default {
 		TweenLite.set(el,{autoAlpha:0});
 		img.onload = function() {
 				el.style.backgroundImage = 'url('+ binding.value +')';
-				TweenLite.to(el,0.5,{autoAlpha : 1});
+				TweenLite.set(el,{autoAlpha : 1});
 				el.classList.add('image-loaded');
 		}
 	}

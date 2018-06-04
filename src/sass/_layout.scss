@@ -37,6 +37,14 @@
 	padding: 15px 55px;
     position: relative;
     z-index: $header-index + 1;
+    @include media-breakpoint-down(md)
+    {
+        padding: 15px 30px;
+    }
+    @include media-breakpoint-down(sm)
+    {
+        padding: 10px 20px;
+    }
 }
 
 // Navigation
@@ -72,6 +80,17 @@
       height: 100vh;
       flex:0 0 auto;
     }
+     @include media-breakpoint-down(md){
+        > .cta-link-card{
+            width: calc(100vw / 2);
+        }
+     }
+
+     @include media-breakpoint-down(sm){
+        > .cta-link-card{
+            width: 100vw;
+        }
+     }
 }
 // Footer
 #main-footer
@@ -85,4 +104,12 @@
 .footer-container
 {
     padding: 15px 55px;
+    @include media-breakpoint-down(md)
+    {
+        padding: 15px 30px;
+    }
+    @include media-breakpoint-down(sm)
+    {
+        padding: 10px 20px;
+    }
 }

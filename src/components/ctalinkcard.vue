@@ -9,7 +9,7 @@
 		<div class="cta-detail">
 			<article>
 				<h2 class="title" v-html="splitWord(title)"></h2>
-			    <span class="btn btn-outline-light" style="opacity: 0">View more <i class="icon-right-open"></i></span>
+			    <span class="btn btn-outline-light">View more <i class="icon-right-open"></i></span>
 			</article>
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 			},
 
 			mouseOn () {
-				if(this.$el.classList.contains('hover-enabled'))
+				if(this.$el.classList.contains('hover-enabled') && !Modernizr.touchevents)
 				{
 					this.$el.classList.add('hovering')
 					TweenMax.staggerTo(this.selectAll('.title>span',this.$el),0.3,{
@@ -37,12 +37,14 @@
 			},
 
 			mouseOff () {
-				this.$el.classList.remove('hovering')
-				TweenMax.staggerTo(this.selectAll('.title>span',this.$el),0.3,{
-					y:0,
-					overwrite:"all",
-					ease: Power1.easeIn
-				},-0.1)
+				if(!Modernizr.touchevents) {
+					this.$el.classList.remove('hovering')
+					TweenMax.staggerTo(this.selectAll('.title>span',this.$el),0.3,{
+						y:0,
+						overwrite:"all",
+						ease: Power1.easeIn
+					},-0.1)
+				}
 			}
 		}
 	}

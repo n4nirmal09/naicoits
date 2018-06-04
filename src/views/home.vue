@@ -1,5 +1,5 @@
 <template>
-		<div  class="nfront-container landing-page">
+		<div  class="nfront-container landing-page bg-primary">
 			<div class="page-detail vs-section">
 			    <page-banner :videoLinks="[{url: require('../assets/Blueplanet.mp4')}]">
 			    	<template slot='content'>

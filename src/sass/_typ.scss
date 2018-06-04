@@ -1,3 +1,7 @@
 html{
 	font-size: $font-size-html;
+
+	@include media-breakpoint-down(sm){
+		font-size: $font-size-html-small;
+	}
 }
