@@ -33,7 +33,6 @@
 
 		beforeDestroy () {
 			this.select('#naico-web').classList.remove('nav-on')
-			this.closeAnim()
 		},
 
 		methods: {
@@ -45,15 +44,21 @@
 			},
 
 			closeAnim () {
-				TweenMax.staggerTo(this.selectAll('.nav-item', this.$el),0.5,{
-					y: 50,
-					autoAlpha: 0
-				},-0.05)
+				return	TweenMax.staggerTo(this.selectAll('.nav-item', this.$el),0.5,{
+							y: 50,
+							autoAlpha: 0
+						},-0.05)
 			},
 
 			navigateTo (url) {
 				this.$emit('closeNav')
-				this.$router.push(url)
+				new TimelineMax({
+					onComplete: () => {
+						this.$router.push(url)
+					}
+				})
+				.add(this.closeAnim())
+				
 			}
 		}
 	}

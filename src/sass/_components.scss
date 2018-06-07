@@ -157,7 +157,7 @@
 	{
 		background: theme-color("primary");
 		transition: ease 0.3s;
-		opacity: 0.8;
+		opacity: 0.5;
 		border-left: 1px solid lighten(theme-color("primary"),10%);
 	    border-right: 1px solid lighten(theme-color("primary"),10%);
 	}
@@ -168,7 +168,7 @@
 		display: flex;
 		align-items:flex-end;
 		height: 100%;
-		padding: calculate-rem(50px,$font-size-html) calculate-rem(50px,$font-size-html) calculate-rem(200px,$font-size-html);
+		padding: calculate-rem(50px,$font-size-html) calculate-rem(50px,$font-size-html) calculate-rem(150px,$font-size-html);
 		color: #fff;
 
 		.title{
@@ -179,10 +179,11 @@
 		}
 
 		.btn{
-			position: absolute;
+			//position: absolute;
 			bottom:0;
 			transition: ease 0.2s;
-			opacity: 0;
+			//opacity: 0;
+			margin-top:50px;
 		}
 	}
 
@@ -202,15 +203,8 @@
 			transform: scale(1.2);
 			& + .overlay-mask
 			{
-				opacity: 0.5
+				opacity: 0.3
 			}
-		}
-		.btn
-		{
-			&:not(:hover){
-				transition-delay:0.3s;
-			}
-			opacity: 1;
 		}
 	}
 
@@ -226,7 +220,6 @@
 		}
 		.btn
 		{
-			transition-delay:0s!important;
 			opacity: 0!important;
 		}
 	}
@@ -235,9 +228,7 @@
 		.cta-link-card
 		{
 			.btn{
-				position: relative;
 				margin-top: 30%;
-				opacity: 1;
 			}
 		}
 	}

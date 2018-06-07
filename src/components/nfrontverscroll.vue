@@ -9,14 +9,37 @@
 	import {scrollPaneY} from '@/virtualscroll/scrollpane'
 
 	export default {
+		props: ['off'], 
+		data () {
+			return {
+				vs: null,
+				resize: null
+			}
+		},
 		mounted () {
 			//console.log(document.getElementById('section-2').offsetTop)
-			let vs = scrollPaneY(this.select('.vertical-scroll-container',this.$el), null,null)
-		    vs.on()
+			this.vs = scrollPaneY(this.select('.vertical-scroll-container',this.$el), null, (t) => {
+				Event.$emit('threshholdThrowY', t)
+			})
+		    this.vs.on()
 		    //this.$el.getElementById('section')
-		    window.addEventListener('resize', () => {
-		      vs.refresh()
-		    })
+		},
+		methods: {
+			refresh () {
+				clearTimeout(this.resize)
+				this.resize = setTimeout(this.vs.refresh, 200)
+			}
+		},
+		watch: {
+			'off' (val) {
+				val ? this.vs.off() : this.vs.on()
+			},
+			'breakpoint.height' (val) {
+				this.refresh()
+			},
+			'breakpoint.width' (val) {
+				this.refresh()
+			}
 		}
 	}
 </script>

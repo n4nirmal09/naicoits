@@ -2,7 +2,7 @@ export default {
 	state: {
 		pageName: '',
 		mainEntryAnim: false,
-		scrollTargetY: 0
+		scrollTargetY: 0,
 	},
 
 	mutations: {

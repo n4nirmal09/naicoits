@@ -7,9 +7,9 @@
    <!-- Main Site loader long -->
    <entry-anim v-if="mainEntryAnim"></entry-anim>
    <!-- Main Content -->
-   <main id="nfront-wrapper" v-else>
-     <transition name="fade">
-        <router-view></router-view>
+   <main id="nfront-wrapper">
+     <transition :name="pageTransition">
+        <router-view v-if="!mainEntryAnim"></router-view>
      </transition>
    </main>
    <!-- Main Footer -->
@@ -24,6 +24,11 @@
 <script>
 export default {
   name: 'App',
+  data () {
+    return {
+      pageTransition: 'fade'
+    }
+  },
   created () {
     // Activatie main entry animation
     this.$store.dispatch('setMainEntryAnim', true)
@@ -35,6 +40,12 @@ export default {
 
     pageName () {
       return this.$store.getters.getPageName
+    }
+  },
+
+  watch: {
+    '$route' (to, from) {
+      to.meta.transitionAnimation === "no-fade" ? this.pageTransition = "" : this.pageTransition = "fade"
     }
   }
 }

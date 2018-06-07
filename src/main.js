@@ -24,7 +24,6 @@ import ctaLinkCard from './components/ctalinkcard'
 
 import bgImage from './directives/bgimage'
 
-
 Vue.config.productionTip = false
 
 // Define global components
@@ -37,19 +36,32 @@ Vue.component('n-h-scroll', horScroll)
 Vue.component('n-v-scroll', verScroll)
 Vue.component('cta-link-card', ctaLinkCard)
 
+
 // Defining Globale directives
 Vue.directive('bgimage',bgImage)
 
 // define a mixin object
 Vue.mixin(globalMixins)
+
+// Global event Bus
+window.Event = new Vue()
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  components: { App },
-  created () {
-  	
-  },
-  template: '<App/>'
+
+const root = new Vue({
+	  el: '#app',
+	  router,
+	  store,
+	  //components: { App },
+	  created () {
+	  	
+	  },
+	  //template: '<App/>',
+	  render: h => h(App)
 })
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   root.$mount('#app')
+  
+//   document.dispatchEvent(new Event('vue-post-render'))
+// })

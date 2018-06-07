@@ -105,7 +105,7 @@ export const scrollPaneY = (container, blockTest, scrollFunc) => {
 		off: function() {
 			VirtualScroll.off(onScroll);
 			FrameImpulse.off(onFrame);
-			TweenLite.set(container,{y: 0})
+			//TweenLite.set(container,{y: 0})
 		}
 	}
 

@@ -20,9 +20,9 @@ export default {
 	},
 
 	beforeRouteLeave (to, from, next) {
+		this.scrollOff = true
 		const toDepth = to.path.split('/').length
         const fromDepth = from.path.split('/').length
-        //console.log(to.path)
         if(toDepth > fromDepth || to.path === "/") {
         	TweenLite.to(this.select('.horizontal-scroll-container',this.$el),0.5,{
 				scale:1.2,
@@ -43,6 +43,7 @@ export default {
 			}})
 			const innerWidth = this.breakpoint.width
 			const offsetLeft = el.offsetLeft
+			el.classList.remove('hover-enabled')
 			el.classList.add('card-transition')
 			tl.staggerTo(this.selectAll('.title>span',el),0.3,{
 				y:0,

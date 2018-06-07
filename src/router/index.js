@@ -45,7 +45,10 @@ export default new Router({
 	  {
 	  	path: '/services/:catId/:serviceId',
 	  	component: serviceSingle,
-	  	name: "Services single"
+	  	name: "Services single",
+	  	meta: {
+	  		transitionAnimation: "no-fade"
+	  	}
 	  },
 	  {
 	  	path: '/about',

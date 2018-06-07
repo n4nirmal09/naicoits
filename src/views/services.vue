@@ -2,7 +2,7 @@
 	<div class="nfront-container service-page">
 		<n-h-scroll :off="scrollOff">
 			<template slot="content">
-		        <div class="nav-hor-grid">
+		        <div class="nav-hor-grid bg-primary">
 		          <cta-link-card
 		          v-for="serviceCategory in serviceCategories"
 		          :key="serviceCategory.catId"

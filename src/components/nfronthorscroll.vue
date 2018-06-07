@@ -1,5 +1,5 @@
 <template>
-	<div class="vs-section bg-primary">
+	<div class="vs-section">
 		<section class="horizontal-scroll-container">
 	        <slot name="content"></slot>
 	    </section>
@@ -12,15 +12,23 @@
 		props: ['off'],
 		data () {
 			return {
-				hs: null
+				hs: null,
+				resize: null
 			}
 		},
 		mounted () {
-			this.hs = scrollPaneX(this.select('.horizontal-scroll-container', this.$el), null, null)
+			this.hs = scrollPaneX(this.select('.horizontal-scroll-container', this.$el), null, (t) => {
+				Event.$emit('threshholdThrowX', t)
+				
+			})
 			const container = this.select('.horizontal-scroll-container', this.$el)
 			if( container.clientWidth > window.innerWidth) {
 				const offset = container.clientWidth - window.innerWidth
 				const tl = new TimelineMax({onComplete: () => {
+					if(this.select('.banner-background',this.$el)){
+						this.select('.banner-background',this.$el).classList.remove('transitioning')
+					}
+					
 					this.hs.on()
 					this.hoverEnableAfterAnim()
 				}})
@@ -37,23 +45,33 @@
 				})
 
 			} else {
+				if(this.select('.banner-background',this.$el)){
+						this.select('.banner-background',this.$el).classList.remove('transitioning')
+				}
 				this.hs.on()
 				this.hoverEnableAfterAnim()
 			}
-		    
-		    window.addEventListener('resize', () => {
-		      this.hs.refresh()
-		    })
 		},
 		methods: {
 			hoverEnableAfterAnim () {
 				const cards = this.selectAll('.cta-link-card', this.$el)
 				cards.forEach(card => card.classList.add('hover-enabled'))
+			},
+
+			refresh () {
+				clearTimeout(this.resize)
+				this.resize = setTimeout(this.hs.refresh, 200)
 			}
 		},
 		watch: {
 			'off' (val) {
 				val ? this.hs.off() : this.hs.on()
+			},
+			'breakpoint.height' (val) {
+				this.refresh()
+			},
+			'breakpoint.width' (val) {
+				this.refresh()
 			}
 		}
 	}

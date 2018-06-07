@@ -2,7 +2,7 @@
 	<div class="nfront-container products-page">
 		<n-h-scroll :off="scrollOff">
 			<template slot="content">
-		        <div class="nav-hor-grid">
+		        <div class="nav-hor-grid bg-primary">
 		          <cta-link-card
 		          v-for="product in products"
 		          :key="product.productId"

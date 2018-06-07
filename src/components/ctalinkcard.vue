@@ -31,7 +31,7 @@
 					TweenMax.staggerTo(this.selectAll('.title>span',this.$el),0.3,{
 						y:-100,
 						delay:0.1,
-						ease: Power1.easeOut
+						ease: Power2.easeInOut
 					},0.1)
 				}
 			},
@@ -42,7 +42,7 @@
 					TweenMax.staggerTo(this.selectAll('.title>span',this.$el),0.3,{
 						y:0,
 						overwrite:"all",
-						ease: Power1.easeIn
+						ease: Power2.easeInOut
 					},-0.1)
 				}
 			}

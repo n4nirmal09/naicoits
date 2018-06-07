@@ -81,7 +81,6 @@
 				let chars = this.splitText(t)
 				let originalText = chars
 				let spans = this.selectAll(t + ">span")
-				console.log(spans.forEach)
 				spans.forEach((span, index) => {
 					tl.from(span,0.2, {autoAlpha: 0}, index*0.1)
 					.to({frame: 0},0.2,{
