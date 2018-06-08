@@ -23,6 +23,26 @@
     left: 0;
 }
 
+.horizontal-scroll-navigation
+{
+    color: #fff;
+    #hor-prev
+    {
+        position: fixed;
+        top:45%;
+        left: 20px;
+        z-index: 2;
+    }
+
+    #hor-next
+    {
+        position: fixed;
+        top:45%;
+        right: 20px;
+        z-index: 2;
+    }
+
+}
 
 // Header
 #main-header

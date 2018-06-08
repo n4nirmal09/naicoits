@@ -3,6 +3,15 @@
 		<section class="horizontal-scroll-container">
 	        <slot name="content"></slot>
 	    </section>
+	    <nav class="horizontal-scroll-navigation" v-if="nav">
+	    	<span id="hor-prev">
+	    		prev
+	    	</span>
+
+	    	<span id="hor-next">
+	    		next
+	    	</span>
+	    </nav>
 	</div>
 </template>
 
@@ -13,7 +22,8 @@
 		data () {
 			return {
 				hs: null,
-				resize: null
+				resize: null,
+				nav: false
 			}
 		},
 		mounted () {
@@ -23,6 +33,7 @@
 			})
 			const container = this.select('.horizontal-scroll-container', this.$el)
 			if( container.clientWidth > window.innerWidth) {
+				this.nav = true
 				const offset = container.clientWidth - window.innerWidth
 				const tl = new TimelineMax({onComplete: () => {
 					if(this.select('.banner-background',this.$el)){
@@ -73,6 +84,10 @@
 			'breakpoint.width' (val) {
 				this.refresh()
 			}
+		},
+
+		beforeDestroy () {
+			this.hs.off()
 		}
 	}
 </script>

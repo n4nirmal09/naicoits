@@ -20,7 +20,14 @@
 			    	</template>
 			    </page-banner>
 			    <!-- The other section -->
-			    <div style="height:100vh" class="bg-primary"></div>
+			    <div style="height:100vh" class="bg-primary">
+			    	<div class="container">
+			    		<div class="row">
+			    			<div class="col-sm-6">col-6</div>
+			    		    <div class="col-sm-6">col-6</div>
+			    		</div>
+			    	</div>
+			    </div>
 			</template>
 		</n-v-scroll>
  	</div>

@@ -17,6 +17,11 @@
 <script>
 	export default {
 		props: ['link', 'image', 'title', 'subText'],
+		data () {
+			return {
+				hovering: true
+			}
+		},
 
 		methods: {
 			navigateTo (url) {
@@ -25,8 +30,9 @@
 			},
 
 			mouseOn () {
-				if(this.$el.classList.contains('hover-enabled') && !Modernizr.touchevents)
+				if(this.$el.classList.contains('hover-enabled') && !Modernizr.touchevents && this.hovering)
 				{
+
 					this.$el.classList.add('hovering')
 					TweenMax.staggerTo(this.selectAll('.title>span',this.$el),0.3,{
 						y:-100,
@@ -34,6 +40,8 @@
 						ease: Power2.easeInOut
 					},0.1)
 				}
+
+				this.hovering = false
 			},
 
 			mouseOff () {
@@ -45,6 +53,8 @@
 						ease: Power2.easeInOut
 					},-0.1)
 				}
+
+				this.hovering = true
 			}
 		}
 	}

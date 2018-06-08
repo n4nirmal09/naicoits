@@ -130,6 +130,21 @@ export const VirtualScroll = ((document) => {
 		notify(e);
 	}
 
+	var next = function(e) {
+		
+		event.deltaX = event.deltaY = 0
+		event.deltaX = -(window.innerWidth * 1.25)
+
+		notify(e)
+	}
+
+	var prev = function(e) {
+		event.deltaX = event.deltaY = 0
+		event.deltaX = (window.innerWidth * 1.25)
+
+		notify(e)
+	}
+
 	var initListeners = function() {
 		if(hasWheelEvent) document.addEventListener("wheel", onWheel);
 		if(hasMouseWheelEvent) document.addEventListener("mousewheel", onMouseWheel);
@@ -147,6 +162,16 @@ export const VirtualScroll = ((document) => {
 		}
 
 		if(hasKeyDown) document.addEventListener("keydown", onKeyDown);
+
+		console.log(this)
+		if(document.getElementById('hor-prev')) {
+			document.getElementById('hor-prev').addEventListener('click', prev)
+		}
+
+		if(document.getElementById('hor-next')) {
+
+			document.getElementById('hor-next').addEventListener('click', next)
+		}
 
 		initialized = true;
 	}
@@ -167,6 +192,14 @@ export const VirtualScroll = ((document) => {
 		}
 
 		if(hasKeyDown) document.removeEventListener("keydown", onKeyDown);
+
+		if(document.getElementById('hor-prev')) {
+			document.getElementById('hor-prev').removeEventListener('click', prev)
+		}
+
+		if(document.getElementById('hor-next')) {
+			document.getElementById('hor-next').removeEventListener('click', next)
+		}
 
 		initialized = false;
 	}
