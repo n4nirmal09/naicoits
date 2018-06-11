@@ -6,6 +6,18 @@
     opacity: 0
 }
 
+.page-fade-enter-active, .page-fade-leave-active {
+    transition: opacity .4s ease;
+}
+.page-fade-enter, .page-fade-leave-active {
+    opacity: 0
+}
+
+.page-fade-leave-active 
+{
+    transition-delay: 1s;
+}
+
 // Keyframes
 @include keyframes('slide-mask-in'){
 	0%{

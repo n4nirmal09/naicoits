@@ -10,7 +10,7 @@ export const VirtualScroll = ((document) => {
 	// Mutiply the touch action by two making the scroll a bit faster than finger movement
 	var touchMult = 2;
 	// Firefox on Windows needs a boost, since scrolling is very slow
-	var firefoxMult = 15;
+	var firefoxMult = 50;
 	// How many pixels to move with each key press
 	var keyStep = 120;
 	// General multiplier for all mousehweel including FF
@@ -163,7 +163,7 @@ export const VirtualScroll = ((document) => {
 
 		if(hasKeyDown) document.addEventListener("keydown", onKeyDown);
 
-		console.log(this)
+		
 		if(document.getElementById('hor-prev')) {
 			document.getElementById('hor-prev').addEventListener('click', prev)
 		}

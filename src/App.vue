@@ -26,7 +26,7 @@ export default {
   name: 'App',
   data () {
     return {
-      pageTransition: 'fade'
+      pageTransition: 'page-fade'
     }
   },
   created () {
@@ -45,7 +45,7 @@ export default {
 
   watch: {
     '$route' (to, from) {
-      to.meta.transitionAnimation === "no-fade" ? this.pageTransition = "" : this.pageTransition = "fade"
+      to.meta.transitionAnimation === "no-fade" ? this.pageTransition = "" : this.pageTransition = "page-fade"
     }
   }
 }

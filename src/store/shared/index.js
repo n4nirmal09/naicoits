@@ -2,12 +2,21 @@ export default {
 	state: {
 		pageName: '',
 		mainEntryAnim: false,
-		scrollTargetY: 0,
+		scrollTargetX: 0,
+		scrollTargetY: 0
 	},
 
 	mutations: {
 		setPageName (state, payload) {
 			state.pageName = payload
+		},
+
+		setScrollTargetY (state, payload) {
+			state.scrollTargetY = payload
+		},
+
+		setScrollTargetX (state, payload) {
+			state.scrollTargetX = payload
 		},
 
 		setScrollTargetY (state, payload) {
@@ -28,6 +37,10 @@ export default {
 			commit('setMainEntryAnim', payload)
 		},
 
+		setScrollTargetX ({commit}, payload) {
+			commit('setScrollTargetX', payload)
+		},
+
 		setScrollTargetY ({commit}, payload) {
 			commit('setScrollTargetY', payload)
 		}
@@ -40,6 +53,10 @@ export default {
 		
 		getMainEntryAnim (state) {
 			return state.mainEntryAnim
+		},
+		
+		getScrollTargetX (state) {
+			return state.scrollTargetX
 		},
 		
 		getScrollTargetY (state) {

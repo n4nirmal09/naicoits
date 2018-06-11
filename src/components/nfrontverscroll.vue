@@ -40,6 +40,11 @@
 			'breakpoint.width' (val) {
 				this.refresh()
 			}
+		},
+		
+		beforeDestroy () {
+			this.vs.off()
+			this.$store.dispatch('setScrollTargetY', 0)
 		}
 	}
 </script>

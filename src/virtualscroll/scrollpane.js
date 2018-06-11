@@ -130,6 +130,8 @@ export const scrollPaneX = (container, blockTest, scrollFunc) => {
 		}
 		scrollTarget = Math.max(scrollTarget, 0);
 		scrollTarget = Math.min(scrollTarget, maxScroll);
+		scrollTarget !== undefined ? state.dispatch('setScrollTargetX',scrollTarget) : ''
+		
 	}
 
 	var onFrame = function() {

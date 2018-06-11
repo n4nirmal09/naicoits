@@ -63,6 +63,11 @@
 				this.hoverEnableAfterAnim()
 			}
 		},
+		computed: {
+			scrollTargetX () {
+				return this.$store.getters.getScrollTargetX
+			}
+		},
 		methods: {
 			hoverEnableAfterAnim () {
 				const cards = this.selectAll('.cta-link-card', this.$el)
@@ -83,11 +88,29 @@
 			},
 			'breakpoint.width' (val) {
 				this.refresh()
+			},
+
+			'scrollTargetX' (val) {
+				if(this.nav){
+					const container = this.select('.horizontal-scroll-container', this.$el)
+					const offset = container.clientWidth - window.innerWidth
+					if(val < 50)
+					{
+						this.$el.classList.add('scroll-start-section')
+					} else if ( val >  (offset - 50) ) {
+						this.$el.classList.add('scroll-end-section')
+					} else {
+						this.$el.classList.remove('scroll-start-section','scroll-end-section')
+					}
+					
+				}
 			}
+
 		},
 
 		beforeDestroy () {
 			this.hs.off()
+			this.$store.dispatch('setScrollTargetX', 0)
 		}
 	}
 </script>
