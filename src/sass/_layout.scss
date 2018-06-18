@@ -8,6 +8,24 @@
     min-height: 100%;
     overflow: hidden;
     z-index: 1;
+
+    &.scroll-start-section
+    {
+        #hor-prev
+        {
+             display: none;
+        }
+       
+    }
+
+    &.scroll-end-section
+    {
+        #hor-next
+        {
+             display: none;
+        }
+       
+    }
 }
 
 .vertical-scroll-container

@@ -34,6 +34,7 @@
 			const container = this.select('.horizontal-scroll-container', this.$el)
 			if( container.clientWidth > window.innerWidth) {
 				this.nav = true
+				this.scrollUpdater(0)
 				const offset = container.clientWidth - window.innerWidth
 				const tl = new TimelineMax({onComplete: () => {
 					if(this.select('.banner-background',this.$el)){
@@ -77,7 +78,23 @@
 			refresh () {
 				clearTimeout(this.resize)
 				this.resize = setTimeout(this.hs.refresh, 200)
+			},
+
+			scrollUpdater (val) {
+					const container = this.select('.horizontal-scroll-container', this.$el)
+					const offset = container.clientWidth - window.innerWidth
+					if(val < 50)
+					{
+						this.$el.classList.remove('scroll-end-section')
+						this.$el.classList.add('scroll-start-section')
+					} else if ( val >  (offset - 50) ) {
+						this.$el.classList.remove('scroll-start-section')
+						this.$el.classList.add('scroll-end-section')
+					} else {
+						this.$el.classList.remove('scroll-start-section','scroll-end-section')
+					}
 			}
+			
 		},
 		watch: {
 			'off' (val) {
@@ -91,19 +108,7 @@
 			},
 
 			'scrollTargetX' (val) {
-				if(this.nav){
-					const container = this.select('.horizontal-scroll-container', this.$el)
-					const offset = container.clientWidth - window.innerWidth
-					if(val < 50)
-					{
-						this.$el.classList.add('scroll-start-section')
-					} else if ( val >  (offset - 50) ) {
-						this.$el.classList.add('scroll-end-section')
-					} else {
-						this.$el.classList.remove('scroll-start-section','scroll-end-section')
-					}
-					
-				}
+				this.scrollUpdater(val)
 			}
 
 		},
