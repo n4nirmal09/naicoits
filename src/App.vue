@@ -32,6 +32,9 @@ export default {
   created () {
     // Activatie main entry animation
     this.$store.dispatch('setMainEntryAnim', true)
+
+    // Call for nav links
+    this.$store.dispatch('AddNavLinks')
   },
   computed: {
     mainEntryAnim () {

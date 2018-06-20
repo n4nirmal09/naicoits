@@ -1,3 +1,6 @@
+import axios from "axios"
+axios.defaults.baseURL = 'http://localhost:8080/';
+
 export default {
 	state: {
 		homeLinks: [
@@ -30,11 +33,35 @@ export default {
 	},
 
 	mutations: {
-
+		AddNavLinks (state, payload) {
+			state.homeLinks = payload
+		}
 	},
 
 	actions: {
+		AddNavLinks ({commit}){
+			const req = axios.get('/static/jsonResponse.txt')
 
+			req.then((res) => {
+				let links = []
+				res.data.forEach(item => {
+					let linkObj = {
+						name: item.title.rendered,
+						url: item.link,
+						date: item.date,
+						uid: item.slug
+					}
+
+					links.push(linkObj)
+				}) 
+				console.log(links)
+				// Now commit the mutation AddNavlinks with the above formated array
+				commit('AddNavLinks', links)
+			})
+			.catch(err => {
+				console.log(err)
+			})
+		}
 	},
 
 	getters: {
