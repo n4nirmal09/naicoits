@@ -9,14 +9,15 @@
 		<div class="cta-detail">
 			<article>
 				<h2 class="title" v-html="splitWord(title)"></h2>
-			    <span class="btn btn-outline-light">View more <i class="icon-right-open"></i></span>
+			    <span class="btn btn-outline-light"
+			    v-if="!parent">View more <i class="icon-right-open"></i></span>
 			</article>
 		</div>
 	</div>
 </template>
 <script>
 	export default {
-		props: ['link', 'image', 'title', 'subText'],
+		props: ['link', 'image', 'title', 'subText', 'parent'],
 		data () {
 			return {
 				hovering: true

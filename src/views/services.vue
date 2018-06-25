@@ -26,7 +26,7 @@
 
 		computed: {
 			serviceCategories () {
-				return this.$store.getters.getServiceCategories
+				return this.$store.getters.getServiceCategories()
 			}
 		}
 	}

@@ -4,6 +4,12 @@
 			<template slot="content">
 		        <div class="nav-hor-grid bg-primary">
 		          <cta-link-card
+		          class="parent-item"
+		          :parent="true"
+		          :image="parentCat.thumb"
+		          :title="parentCat.name"></cta-link-card>
+
+		          <cta-link-card
 		          v-for="service in services"
 		          :key="service.serviceId"
 		          :link="'/services/' + service.category + '/' + service.serviceId"
@@ -27,6 +33,10 @@
 		},
 
 		computed: {
+			parentCat () {
+				const catId = this.$route.params.catId
+				return this.$store.getters.getServiceCategories(catId)
+			},
 			services () {
 				return this.$store.getters.getServices(this.$route.params.catId)
 			}

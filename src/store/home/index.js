@@ -54,9 +54,9 @@ export default {
 
 					links.push(linkObj)
 				}) 
-				console.log(links)
+				//console.log(links)
 				// Now commit the mutation AddNavlinks with the above formated array
-				commit('AddNavLinks', links)
+				//commit('AddNavLinks', links)
 			})
 			.catch(err => {
 				console.log(err)

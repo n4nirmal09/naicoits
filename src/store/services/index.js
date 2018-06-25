@@ -135,7 +135,13 @@ export default {
 		},
 
 		getServiceCategories (state) {
-			return state.serviceCategoryies
+			return (catId) => {
+				if (catId) {
+					return state.serviceCategoryies.find(c => c.catId === catId)
+				} else {
+					return state.serviceCategoryies
+				}
+			}
 		},
 
 	}
